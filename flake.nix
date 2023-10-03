@@ -32,7 +32,7 @@
           with ps; [
             jupyter
             numpy
-            pandas
+            matplotlib
             scipy
           ];
       in {
@@ -44,15 +44,23 @@
                 packages = with pkgs; [
                   # Python
                   (python3.withPackages pythonPackages)
-                  pandoc
                   black
+
+                  # Formatting
+                  pandoc
 
                   # Nix
                   alejandra
-                  rnix-lsp
+                  nil
                 ];
                 scripts = {
                   start.exec = "jupyter notebook --no-browser";
+                };
+
+                pre-commit.hooks = {
+                  alejandra.enable = true;
+                  black.enable = true;
+                  prettier.enable = true;
                 };
               }
             ];
