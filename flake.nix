@@ -43,11 +43,15 @@
               {
                 packages = with pkgs; [
                   # Python
-                  (python3.withPackages pythonPackages)
+                  (
+                    python3.withPackages pythonPackages
+                  )
                   black
+                  nodePackages.pyright
 
                   # Formatting
                   pandoc
+                  haskellPackages.pandoc-include-code
 
                   # Nix
                   alejandra
