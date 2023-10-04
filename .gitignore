@@ -1,0 +1,9 @@
+# Python
+.ipynb_checkpoints/
+
+# Nix
+.pre-commit-config.yaml
+.devenv/
+
+# Others
+test.*
