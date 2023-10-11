@@ -28,35 +28,35 @@
         lib,
         ...
       }: let
-        pythonPackages = ps:
-          with ps; [
-            jupyter
-            numpy
-            matplotlib
-            scipy
-          ];
+        prodPackages = with pkgs; [
+          (python3.withPackages (ps:
+            with ps; [
+              jupyter
+              numpy
+              matplotlib
+              scipy
+            ]))
+
+          pandoc
+          pandoc-include
+        ];
       in {
         devShells = {
           default = devenv.lib.mkShell {
             inherit inputs pkgs;
             modules = [
               {
-                packages = with pkgs; [
-                  # Python
-                  (
-                    python3.withPackages pythonPackages
-                  )
-                  black
-                  nodePackages.pyright
+                packages = with pkgs;
+                  [
+                    # Python
+                    black
+                    nodePackages.pyright
 
-                  # Formatting
-                  pandoc
-                  haskellPackages.pandoc-include-code
-
-                  # Nix
-                  alejandra
-                  nil
-                ];
+                    # Nix
+                    alejandra
+                    nil
+                  ]
+                  ++ prodPackages;
                 scripts = {
                   start.exec = "jupyter notebook --no-browser";
                 };
@@ -68,6 +68,33 @@
                 };
               }
             ];
+          };
+        };
+        packages = rec {
+          default = notebooks;
+
+          notebooks = pkgs.stdenv.mkDerivation {
+            name = "notebooks";
+            version = "0.1.0";
+            src = ./.;
+
+            dontUnpack = true;
+
+            buildInputs = prodPackages;
+
+            buildPhase = ''
+                mkdir -p $out/generated/
+
+                cd $src
+
+                ls -larth . src/ src/generic/
+
+                file -i src/generic/main.py
+
+                for subfolders in generic regression titration; do
+                  pandoc --filter pandoc-include -i src/main.md src/$subfolders/main.md -o $out\/generated/$subfolders.ipynb
+              done
+            '';
           };
         };
       };
