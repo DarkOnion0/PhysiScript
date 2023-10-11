@@ -4,6 +4,7 @@
 # Nix
 .pre-commit-config.yaml
 .devenv/
+result
 
 # Others
 test.*

@@ -1,0 +1,13 @@
+default:
+  image: nixos/nix:2.18.0
+  before_script:
+    - echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+
+notebooks:
+  stage: build
+  script:
+    - nix build .#notebooks
+    - cp result/generated/ . -r # expose the generated file to gitlab that doesn't like symlink :)
+  artifacts:
+    paths:
+      - generated/

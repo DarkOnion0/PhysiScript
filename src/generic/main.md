@@ -4,8 +4,8 @@
 import numpy as np
 ```
 
-```{include=src/generic/main.py .code}
-
+```code
+!include src/generic/main.py
 ```
 
 ## Example
