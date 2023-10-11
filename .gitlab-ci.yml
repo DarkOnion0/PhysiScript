@@ -4,7 +4,7 @@ default:
     - echo "experimental-features = nix-command flakes" >> /etc/nix/nix.confbash-5.2# nix flake
 
 notebooks:
-  stage: build
+  stage: Build
   script:
     - nix build .#notebooks
   artifacts:
