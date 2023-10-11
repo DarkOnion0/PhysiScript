@@ -4,8 +4,8 @@
 import numpy as np
 ```
 
-```{.code include=src/regression/main.py}
-
+```code
+!include src/regression/main.py
 ```
 
 ## Example

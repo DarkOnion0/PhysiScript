@@ -4,8 +4,8 @@
 import numpy as np
 ```
 
-```{include=src/titration/main.py .code}
-
+```code
+!import src/titration/main.py
 ```
 
 ## Example
