@@ -6,7 +6,7 @@
 
 ## Description
 
-**⚠️ For the time being, I'm building this collection of tools on my free time _AND_ according to what I'm learning at school. Therefore, the collection may be a little moment at the moment ⚠️**
+**⚠️ For the time being, I'm building this collection of tools on my free time _AND_ according to what I'm learning at school. Therefore, the collection may be a little small at the moment ⚠️**
 
 This project provides a wide range of prebuilt jupyter-notebooks on different physic and chemistry related topics.
 
