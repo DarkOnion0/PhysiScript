@@ -4,13 +4,13 @@ import scipy as sp
 from math import floor
 
 
-def titragePH(title, x, y, showVeLine: bool = False):
+def ph_titration(title, x, y, showVeLine: bool = False):
     """
-    Créer un graphique d'analyse de titrage pH-métrique en fonctions des paramètres suivants :
-    - title : le titre du graphique
-    - x : l'axe des abscisse [nom, coordonées]
-    - y : l'axe des ordonnées [nom, coordonées]
-    - showVeLine: Affiche la droite verticale corréspondant aux volume à l'équivalence
+    Diplay an acid-base titration plot with the following parameters :
+    - title : the main title of the plot
+    - x : Abscissa [name, coordinates]
+    - y : Ordinate [name, coordinates]
+    - showVeLine: Display a vertical line with equation x = equivalence
     """
 
     ##########
@@ -27,12 +27,6 @@ def titragePH(title, x, y, showVeLine: bool = False):
     ####################
     ## Line Smoothing ##
     ####################
-
-    # https://stackoverflow.com/questions/29934831/matplotlib-draw-spline-from-3-points#29948678
-    # if len(x[1]) > 3:
-    #    tck = sp.interpolate.splrep(x[1], y[1],s=1)
-    # else:
-    #    tck = sp.interpolate.splrep(x[1], y[1], k=2, s=0)
 
     # https://docs.scipy.org/doc/scipy/tutorial/interpolate/1D.html#monotone-interpolants
     xnew = np.linspace(min(x[1]), max(x[1]), len(x[1]) * 50)
@@ -89,14 +83,14 @@ def titragePH(title, x, y, showVeLine: bool = False):
     ax.legend()
 
 
-def titrageConductimetrique(title, x, y, split, showVeLine: bool = False):
+def conductometric_titration(title, x, y, split, showVeLine: bool = False):
     """
     Créer un graphique d'analyse de titrage conductimétrique en fonctions des paramètres suivants :
-    - title : le titre du graphique
-    - x : l'axe des abscisse [nom, coordonées]
-    - y : l'axe des ordonnées [nom, coordonées]
-    - split : l'indexe python de ou rompre la série de donnée
-    - showVeLine: Affiche la droite verticale corréspondant aux volume à l'équivalence
+    - title : the main title of the plot
+    - x : Abscissa [name, coordinates]
+    - y : Ordinate [name, coordinates]
+    - split : The index (starting from 0) where to cut the dataset
+    - showVeLine: Display a vertical line with equation x = equivalence
     """
 
     ##########

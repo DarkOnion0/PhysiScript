@@ -7,10 +7,10 @@ def line(
     y,
 ):
     """
-    Créer une ligne en fonction des paramètres suivants :
-    - title : le titre du graphique
-    - x : l'axe des abscisse [nom, coordonées]
-    - y : l'axe des ordonnées [nom, coordonées]
+    Create a line according to the following parameters :
+    - title : the main title of the plot
+    - x : Abscissa [name, coordinates]
+    - y : Ordinate [name, coordinates]
     """
 
     ##########

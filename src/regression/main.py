@@ -5,10 +5,11 @@ import scipy as sp
 def regression(title, x, y, reg):
     """
     Créer une regression linéaire en fonction des paramètres suivants :
-    - title : le titre du graphique
-    - x : l'axe des abscisse [nom, coordonées]
-    - y : l'axe des ordonnées [nom, coordonées]
-    - reg : les paramètres de regressions [message, x/y, coordonée]
+    Create a linear regression according to the following parameter :
+    - title : the main title of the plot
+    - x : Abscissa [name, coordinates]
+    - y : Ordinate [name, coordinates]
+    - reg : regression's parameters [message, targeted_axis, targeted_axis_value]
     """
 
     ##########
